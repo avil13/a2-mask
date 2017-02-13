@@ -1,6 +1,6 @@
 {
   "name": "a2-mask",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "license": "MIT",
   "main": "src/a2/lib/index.js",
   "types": "src/a2/lib/index.d.ts",
@@ -22,6 +22,9 @@
     "ng",
     "angular2-plugin"
   ],
+  "repository": {
+    "git": "https://github.com/avil13/a2-mask"
+  },
   "devDependencies": {
     "@angular/common": "^2.3.1",
     "@angular/compiler": "^2.3.1",

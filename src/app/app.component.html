@@ -1,11 +1,49 @@
-<h1>
-  {{title}}
-</h1>
+<h1> a2-mask </h1>
+
+Simplest angular2 input mask
 
 
-<pre lg="console">
-    npm install
-</pre>
+<pre lg="console"> npm install a2-mask </pre>
+
+<pre lg="typescript">{{ inst }}</pre>
+
+
+<hr>
+<br>
+<pre lg="html">{{ num }}</pre>
+<label>
+    Number:
+    <input type="text" [a2-mask]="'number'">
+</label>
+
+<hr>
+<br>
+<pre lg="html">{{ date }}</pre>
+<label>
+    Date:
+    <input type="text" [a2-mask]="'date'">
+</label>
+
+<hr>
+<br>
+<pre lg="html">{{ phone }}</pre>
+<label>
+    Phone:
+    <input type="text" [a2-mask]="'phone'">
+</label>
+
+<hr>
+<br>
+<pre lg="typescript">{{ reg_ts }}</pre>
+<label>
+    RegExp:
+    <input type="text" [a2-mask]="'99-xxx-999'">
+</label>
+
+
+
+
+
 
 <hr>
 

@@ -12,7 +12,7 @@ export class AppComponent {
   inst = `...
 
 // Import a2 directive
-import { A2MaskDirective } from './../a2/a2-mask/a2-mask.directive';
+import { A2MaskDirective } from 'a2-mask';
 
 // Set options if you  want
 A2MaskDirective.setOptions({

@@ -105,26 +105,33 @@ export class A2MaskDirective implements AfterViewInit {
      * Обработка чисел
      */
     private toNumber(value): string {
-        let src = value.toString().replace(/[\D]/g, '').split(''); // цифры в виде массива
-        let res = [];
+        let src = value.toString().replace(/[^\d\.]/g, '').split('.'); // цифры в виде массива
+        let hasDot: boolean = src[1] !== undefined;
 
         if (src.lenght === 0) {
-            return res.join('');
+            return '';
         }
 
-        for (let i = src.length; i--; /**/) {
-            res.push(src[i]);
+        const _formatNumber = (string_src: string) => {
+            const _src = string_src.split('');
+            let res = [];
 
-            if ((res.length + 1) % 4 === 0) {
-                res.push(A2MaskDirective.options.number_delimiter);
+            for (let i = _src.length; i--; /**/) {
+                res.push(_src[i]);
+
+                if ((res.length + 1) % 4 === 0) {
+                    res.push(A2MaskDirective.options.number_delimiter);
+                }
             }
-        }
 
-        if (res[res.length - 1] === A2MaskDirective.options.number_delimiter) {
-            res.splice(-1);
-        }
+            if (res[res.length - 1] === A2MaskDirective.options.number_delimiter) {
+                res.splice(-1);
+            }
 
-        return res.reverse().join('');
+            return res.reverse().join('');
+        };
+
+        return _formatNumber(src[0]) + (hasDot ? '.' + _formatNumber(src[1]) : '');
     }
 
 

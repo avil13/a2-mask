@@ -9,7 +9,7 @@ body {
     background-color: #222;
     background-image: url(assets/dark_wall.png);
     padding-top: 10px;
-    padding: 2rem;
+    padding: 2rem 2rem 3rem;
 }
 
 * {

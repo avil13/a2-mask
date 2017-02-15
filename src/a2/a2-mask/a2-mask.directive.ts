@@ -101,6 +101,33 @@ export class A2MaskDirective implements AfterViewInit {
     // = actions =
     //
 
+    private _formatNumber(string_src: string, reverse = false): string {
+        let _src = string_src.split('');
+        let res = [];
+
+        if (reverse) {
+            _src = _src.reverse();
+        }
+
+        for (let i = _src.length; i--; /**/) {
+            res.push(_src[i]);
+
+            if ((res.length + 1) % 4 === 0) {
+                res.push(A2MaskDirective.options.number_delimiter);
+            }
+        }
+
+        if (res[res.length - 1] === A2MaskDirective.options.number_delimiter) {
+            res.splice(-1);
+        }
+
+        if (reverse) {
+            return res.join('');
+        }
+
+        return res.reverse().join('');
+    }
+
     /**
      * Обработка чисел
      */
@@ -112,26 +139,7 @@ export class A2MaskDirective implements AfterViewInit {
             return '';
         }
 
-        const _formatNumber = (string_src: string) => {
-            const _src = string_src.split('');
-            let res = [];
-
-            for (let i = _src.length; i--; /**/) {
-                res.push(_src[i]);
-
-                if ((res.length + 1) % 4 === 0) {
-                    res.push(A2MaskDirective.options.number_delimiter);
-                }
-            }
-
-            if (res[res.length - 1] === A2MaskDirective.options.number_delimiter) {
-                res.splice(-1);
-            }
-
-            return res.reverse().join('');
-        };
-
-        return _formatNumber(src[0]) + (hasDot ? '.' + _formatNumber(src[1]) : '');
+        return this._formatNumber(src[0]) + (hasDot ? '.' + this._formatNumber(src[1], true) : '');
     }
 
 
@@ -186,6 +194,27 @@ export class A2MaskDirective implements AfterViewInit {
 
             return res.join('');
         };
+    }
+
+    /**
+     * TODO:
+     * Проверка по регулярному выражению
+     * 
+     * @private
+     * @param {any} opts
+     * 
+     * @memberOf A2MaskDirective
+     */
+    private toRegularExp(opts) {
+        // t.constructor == RegExp
+        return (value: string): string => {
+            let res = value.split('');
+            if (opts.pattern.test(value)) {
+                return value;
+            }
+            res.splice(-1);
+            return res.join('');
+        }
     }
 
 }

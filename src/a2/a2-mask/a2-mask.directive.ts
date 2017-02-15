@@ -53,6 +53,10 @@ export class A2MaskDirective implements AfterViewInit {
     private get getAction(): Function {
         let type = (typeof this.a2Mask === 'string') ? this.a2Mask : this.a2Mask.type;
 
+        if (!type && this.a2Mask && !!this.a2Mask.pattern) {
+            type = 'pattern';
+        }
+
         let opt = {
             pattern: ''
         };

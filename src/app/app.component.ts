@@ -43,10 +43,6 @@ export class AppModule { }
 
   phone = `<input type="text" [a2-mask]="'phone'">`;
 
-  reg_ts = `val = {
-    type: 'pattern',
-    pattern: //
-  }`;
-  reg_html = ``;
+  pattern = `<input type="text" [a2-mask]="{pattern: '99-xxx-999'}">`;
 
 }

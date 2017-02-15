@@ -13,7 +13,7 @@ body {
 }
 
 * {
-    color: #7a7a7a;
+    color: #ccc;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -27,6 +27,7 @@ body {
     margin-left: auto;
     padding-left: 15px;
     padding-right: 15px;
+    max-width: 960px;
 }
 
 input,
@@ -47,6 +48,8 @@ textarea {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    max-width: 25rem;
+    margin: 3px 0;
 }
 
 .btn {
@@ -88,12 +91,12 @@ textarea {
 pre {
     background-image: none;
     border-radius: 4px;
-    color: #6dae6d;
+    color: #50E3C2;
     padding: 6px 12px;
     position: relative;
     white-space: pre;
     overflow: auto;
-    background-color: rgba(20, 20, 20, 0.2);
+    background-color: rgba(2, 2, 2, 0.2);
     border: 1px solid #101010;
     -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .6), 0 0 2px rgba(255, 255, 255, .2)!important;
     -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, .6), 0 0 2px rgba(255, 255, 255, .2)!important;
@@ -130,4 +133,11 @@ pre[lg]:before {
     cursor: pointer;
     background-image: url(assets/PNG/GitHub-Mark-Light-32px.png);
     background-repeat: no-repeat;
+    float: right;
+    margin: 0 2px;
+}
+
+a:hover {
+    -webkit-filter: drop-shadow(0px 0px 2px #50E3C2);
+    filter: drop-shadow(0px 0px 2px #50E3C2);
 }

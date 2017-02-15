@@ -9,6 +9,7 @@ Simplest angular2 input mask
 
 
 <hr>
+<h3>Examples:</h3>
 <br>
 <pre lg="html">{{ num }}</pre>
 <label>
@@ -34,10 +35,10 @@ Simplest angular2 input mask
 
 <hr>
 <br>
-<pre lg="typescript">{{ reg_ts }}</pre>
+<pre lg="typescript">{{ pattern }}</pre>
 <label>
-    RegExp:
-    <input type="text" [a2-mask]="'99-xxx-999'">
+    Pattern:
+    <input type="text" [a2-mask]="{pattern: '99-xxx-999'}">
 </label>
 
 

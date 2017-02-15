@@ -43,6 +43,12 @@ export class AppModule { }
 
   phone = `<input type="text" [a2-mask]="'phone'">`;
 
-  pattern = `<input type="text" [a2-mask]="{pattern: '99-xxx-999'}">`;
+  pattern = `
+9 // digits 0-9
+A // a-z & A-Z 
+S // a-z & A-Z & 0-9
+
+<input type="text" [a2-mask]="{pattern: '9-xxx-A-S'}">
+`;
 
 }

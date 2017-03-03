@@ -25,7 +25,7 @@ export declare class A2MaskDirective implements AfterViewInit {
     /**
      * Обработка чисел
      */
-    private toNumber(value);
+    private toNumber(has_dot?);
     /**
      * формируем значение по паттерну
      */

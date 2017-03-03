@@ -49,7 +49,9 @@ var A2MaskDirective = (function () {
             };
             switch (type) {
                 case 'number':
-                    return this.toNumber;
+                    return this.toNumber(false);
+                case 'float':
+                    return this.toNumber(true);
                 case 'pattern':
                     if (typeof this.a2Mask === 'object') {
                         opt.pattern = this.a2Mask.pattern;
@@ -83,6 +85,9 @@ var A2MaskDirective = (function () {
     //
     A2MaskDirective.prototype._formatNumber = function (string_src, reverse) {
         if (reverse === void 0) { reverse = false; }
+        if (!string_src) {
+            string_src = '';
+        }
         var _src = string_src.split('');
         var res = [];
         if (reverse) {
@@ -105,13 +110,17 @@ var A2MaskDirective = (function () {
     /**
      * Обработка чисел
      */
-    A2MaskDirective.prototype.toNumber = function (value) {
-        var src = value.toString().replace(/[^\d\.]/g, '').split('.'); // цифры в виде массива
-        var hasDot = src[1] !== undefined;
-        if (src.lenght === 0) {
-            return '';
-        }
-        return this._formatNumber(src[0]) + (hasDot ? '.' + this._formatNumber(src[1], true) : '');
+    A2MaskDirective.prototype.toNumber = function (has_dot) {
+        var _this = this;
+        if (has_dot === void 0) { has_dot = false; }
+        return function (value) {
+            var src = value.toString().replace(/[^\d\.]/g, '').split('.'); // цифры в виде массива
+            var hasDot = has_dot && src[1] !== undefined;
+            if (src.lenght === 0) {
+                return '';
+            }
+            return _this._formatNumber(src[0]) + (hasDot ? '.' + _this._formatNumber(src[1], true) : '');
+        };
     };
     /**
      * формируем значение по паттерну

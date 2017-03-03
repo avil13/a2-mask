@@ -1,6 +1,6 @@
 {
   "name": "a2-mask",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "main": "src/a2/lib/index.js",
   "types": "src/a2/lib/index.d.ts",

@@ -39,6 +39,8 @@ export class AppModule { }
 
   num = `<input type="text" [a2-mask]="'number'">`;
 
+  float = `<input type="text" [a2-mask]="'float'">`;
+
   date = `<input type="text" [a2-mask]="'date'">`;
 
   phone = `<input type="text" [a2-mask]="'phone'">`;

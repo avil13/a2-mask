@@ -63,7 +63,10 @@ export class A2MaskDirective implements AfterViewInit {
 
         switch (type) {
             case 'number':
-                return this.toNumber;
+                return this.toNumber(false);
+
+            case 'float':
+                return this.toNumber(true);
 
             case 'pattern':
                 if (typeof this.a2Mask === 'object') {
@@ -102,6 +105,10 @@ export class A2MaskDirective implements AfterViewInit {
     //
 
     private _formatNumber(string_src: string, reverse = false): string {
+        if (!string_src) {
+            string_src = '';
+        }
+
         let _src = string_src.split('');
         let res = [];
 
@@ -131,15 +138,17 @@ export class A2MaskDirective implements AfterViewInit {
     /**
      * Обработка чисел
      */
-    private toNumber(value): string {
-        let src = value.toString().replace(/[^\d\.]/g, '').split('.'); // цифры в виде массива
-        let hasDot: boolean = src[1] !== undefined;
+    private toNumber(has_dot = false) {
+        return (value): string => {
+            let src = value.toString().replace(/[^\d\.]/g, '').split('.'); // цифры в виде массива
+            let hasDot: boolean = has_dot && src[1] !== undefined;
 
-        if (src.lenght === 0) {
-            return '';
-        }
+            if (src.lenght === 0) {
+                return '';
+            }
 
-        return this._formatNumber(src[0]) + (hasDot ? '.' + this._formatNumber(src[1], true) : '');
+            return this._formatNumber(src[0]) + (hasDot ? '.' + this._formatNumber(src[1], true) : '');
+        };
     }
 
 
